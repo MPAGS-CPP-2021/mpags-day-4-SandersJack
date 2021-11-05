@@ -13,7 +13,7 @@
  */
 
 /**
- * \class PlyFair
+ * \class PlayfairCipher
  * \brief Encrypt or decrypt text using the PlayFair cipher with the given key
  */
 class PlayfairCipher {
@@ -23,7 +23,7 @@ class PlayfairCipher {
      *
      * \param key the key to use in the cipher
      */
-    PlayfairCipher(const std::string& key);
+    explicit PlayfairCipher(const std::string& key);
     /**
      * \brief Create a new PlayFair, converting the given string into the key
      *
@@ -38,11 +38,17 @@ class PlayfairCipher {
      * \return the result of applying the cipher to the input text
      */
     std::string applyCipher(const std::string& inputText,
-                            const CipherMode cipherMode);
+                            const CipherMode cipherMode) const;
 
   private:
-
-    char convert(std::vector<std::size_t> npos);
+    /**
+     * \brief Converts new grid position to character
+     *
+     * \param npos position vector {col,row} of the 5x5 grid
+     *
+     * \return the new character in npos 
+     */
+    char convert(std::vector<std::size_t> npos) const;
 
     std::string input_{""};
     /**
@@ -73,8 +79,20 @@ class PlayfairCipher {
 
     std::string key_{""};
 
+     /**
+     * 
+     * \brief Map to contain the key character and its position 
+     * 
+     * \private str_ - {character, {col,row}}
+     */
     using Str2IntMap = std::map<char, std::vector<std::size_t>>;
     Str2IntMap str_;
+    /**
+     * 
+     * \brief Map to contain the key position and its character 
+     * 
+     * \private inte_ - {{col,row}, character}
+     */
     using Int2String = std::map<std::vector<std::size_t>,char>;
     Int2String inte_;
 };
