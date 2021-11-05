@@ -9,6 +9,7 @@ find_package(Doxygen REQUIRED)
 # the value of the CMake variable named 'VARIABLE' in the output file
 configure_file(Doxyfile.in Doxyfile @ONLY)
 
+
 # Run Doxygen
 add_custom_command(
   # What this command generates
