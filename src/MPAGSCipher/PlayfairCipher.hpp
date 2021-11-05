@@ -38,9 +38,13 @@ class PlayfairCipher {
      * \return the result of applying the cipher to the input text
      */
     std::string applyCipher(const std::string& inputText,
-                            const CipherMode cipherMode) const;
+                            const CipherMode cipherMode);
 
   private:
+
+    char convert(std::vector<std::size_t> npos);
+
+    std::string input_{""};
     /**
      * 
      * \brief Used to determine the cipher character given the plain character and the key
@@ -69,9 +73,9 @@ class PlayfairCipher {
 
     std::string key_{""};
 
-    using Str2IntMap = std::map<char, std::size_t>;
+    using Str2IntMap = std::map<char, std::vector<std::size_t>>;
     Str2IntMap str_;
-    using Int2String = std::map<std::size_t,char>;
+    using Int2String = std::map<std::vector<std::size_t>,char>;
     Int2String inte_;
 };
 

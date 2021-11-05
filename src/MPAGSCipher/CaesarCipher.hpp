@@ -41,6 +41,7 @@ class CaesarCipher {
      */
     std::string applyCipher(const std::string& inputText,
                             const CipherMode cipherMode) const;
+    
 
   private:
     /**
@@ -60,7 +61,6 @@ class CaesarCipher {
      * 
      * \private alphabetSize_ 
      */
-    /// 
     const std::size_t alphabetSize_{alphabet_.size()};
 
     /**
@@ -69,7 +69,7 @@ class CaesarCipher {
      * 
      * \private key_ 
      */
-    /// 
+    
     std::size_t key_{0};
 };
 
